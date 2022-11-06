@@ -12,7 +12,6 @@ using namespace std;
 int main()
 {
 	setlocale(LC_ALL, "RUS");
-
 	struct rabotnic
 	{
 		char fam[20];
@@ -33,19 +32,21 @@ int main()
 		cin >> spisok[i].postup;
 		cout << endl;
 	}
-	int k=0;
+	int k = 0;
+	for(int i=0;i<colvo;i++)
+		for (int j = i + 1; j < colvo; j++)
+		{
+			int godi=2022-spisok[i].postup, godj=2022-spisok[j].postup;
+			if (godi < godj) swap(spisok[j], spisok[i]);
+		}
 	for (int i=0; i < colvo; i++)
 	{
 		k++;
 		if (spisok[i].god > 1985)
 		{
-
-			for(int j=0;j<k;j++)
-
-			cout << "Фамилия: " << spisok[i].fam << endl << " Год рожд: " << spisok[i].god << " Год поступ.: " << spisok[i].postup << endl;
+			cout << "Фамилия: " << spisok[i].fam << " Год рожд: " << spisok[i].god << " Год поступ.: " << spisok[i].postup << endl;
 		}
 	}
-
 	delete[]spisok;
 	return 0;
 }
